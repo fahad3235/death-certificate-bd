@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Death Certificate BD — Death Registration Guide &amp; Application Helper</title>
+<meta name="description" content="Free offline bilingual (English/বাংলা) guide to registering a death in Bangladesh: fee calculator, document checklist, application helper with printable cover letter.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <h1 id="appTitle">Death Certificate BD</h1>
+      <p class="tagline" data-i18n="tagline">Death registration guide &amp; application helper for Bangladesh</p>
+    </div>
+    <button id="langBtn" class="lang-btn" type="button">বাংলা</button>
+  </div>
+</header>
+
+<nav class="tabs wrap" role="tablist" aria-label="Sections">
+  <button class="tab active" data-tab="guide" role="tab" aria-selected="true" data-i18n="tabGuide">Guide</button>
+  <button class="tab" data-tab="fee" role="tab" aria-selected="false" data-i18n="tabFee">Fee Calculator</button>
+  <button class="tab" data-tab="checklist" role="tab" aria-selected="false" data-i18n="tabChecklist">Documents</button>
+  <button class="tab" data-tab="apply" role="tab" aria-selected="false" data-i18n="tabApply">Application</button>
+  <button class="tab" data-tab="faq" role="tab" aria-selected="false" data-i18n="tabFaq">FAQ</button>
+  <button class="tab" data-tab="data" role="tab" aria-selected="false" data-i18n="tabData">Data</button>
+</nav>
+
+<main class="wrap">
+  <!-- ============ GUIDE ============ -->
+  <section id="tab-guide" class="panel">
+    <h2 data-i18n="guideTitle">How to register a death in Bangladesh</h2>
+    <p data-i18n="guideIntro">Death registration in Bangladesh runs through BDRIS — the Birth and Death Registration Information System — under the Births and Deaths Registration Act, 2004. Register with the registrar of the Union Parishad, Pourashava, City Corporation or Cantonment Board covering the area where the death occurred. For a death abroad, register at the nearest Bangladesh mission.</p>
+
+    <h3 data-i18n="whoTitle">Who can apply</h3>
+    <p data-i18n="whoText">The application is generally filed by the deceased's father, mother, spouse, son or daughter.</p>
+
+    <h3 data-i18n="stepsTitle">Steps</h3>
+    <ol class="steps">
+      <li data-i18n="step1">Collect the documents listed in the <strong>Documents</strong> tab.</li>
+      <li data-i18n="step2">Apply online at <strong>bdris.gov.bd/dr/application</strong> — or collect the form at the registrar's office.</li>
+      <li data-i18n="step3">Fill in the deceased's details, the date and place of death, and the cause of death as written by the doctor or hospital.</li>
+      <li data-i18n="step4">Submit the application and note the application / tracking number.</li>
+      <li data-i18n="step5">Visit the registrar's office with the original documents for verification, at the counter or an appointment slot booked through the portal.</li>
+      <li data-i18n="step6">Pay the fee, if any (see the <strong>Fee Calculator</strong> tab).</li>
+      <li data-i18n="step7">Collect the printed death certificate from the office once it is approved.</li>
+    </ol>
+
+    <h3 data-i18n="whyTitle">Why you need it</h3>
+    <p data-i18n="whyText">A death certificate is needed sooner than most families expect: for the warish (heirship) certificate, bank accounts and savings certificates, pension and gratuity, insurance claims, land mutation, and closing a mobile number or a trade licence.</p>
+
+    <div class="note" data-i18n="guideNote">Register within 45 days of the death: it is free, and it is the smoothest path. After 45 days a small fee applies, and after 5 years you must also give a written explanation for the delay.</div>
+  </section>
+
+  <!-- ============ FEE ============ -->
+  <section id="tab-fee" class="panel" hidden>
+    <h2 data-i18n="feeTitle">Registration fee calculator</h2>
+    <p data-i18n="feeIntro">The fee depends on how long it has been since the death. Enter the date of death to see the band.</p>
+    <div class="form-row">
+      <label for="deathDateInput" data-i18n="deathDateLabel">Date of death</label>
+      <input type="date" id="deathDateInput">
+    </div>
+    <div class="form-row">
+      <button id="feeBtn" class="btn primary" type="button" data-i18n="feeBtn">Calculate fee</button>
+    </div>
+    <p id="feeError" class="error" hidden></p>
+    <div id="feeResult" class="result-card" hidden>
+      <p><span data-i18n="feeDays">Days since death</span>: <strong id="feeDaysOut"></strong></p>
+      <p><span data-i18n="feeBand">Fee band</span>: <strong id="feeBandOut"></strong></p>
+      <p><span data-i18n="feeAmount">Fee</span>: <strong id="feeAmountOut"></strong></p>
+      <p id="feeNote" class="muted"></p>
+    </div>
+    <table class="fee-table">
+      <caption data-i18n="feeTableCap">Fee bands (commonly cited figures)</caption>
+      <thead><tr><th data-i18n="thTime">Time since death</th><th data-i18n="thFee">Fee</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="bandFree">Within 45 days</td><td data-i18n="feeFree">Free — no fee</td></tr>
+        <tr><td data-i18n="bandLate">45 days to 5 years</td><td>৳25</td></tr>
+        <tr><td data-i18n="bandVeryLate">More than 5 years</td><td>৳50</td></tr>
+      </tbody>
+    </table>
+    <p class="muted small" data-i18n="feeDisclaimer">Fee figures are the amounts commonly cited in Bangladeshi guides (৳25 up to 5 years, ৳50 after). The US State Department reciprocity schedule lists different figures (৳100 / ৳200 / ৳500). Always confirm the current fee at your local registrar's office before paying — this calculator is a guide, not an official fee schedule.</p>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section id="tab-checklist" class="panel" hidden>
+    <h2 data-i18n="docsTitle">Documents checklist</h2>
+    <p><span data-i18n="docsProgress">Progress</span>: <strong id="docsPct">0%</strong> (<span id="docsCount">0 / 8</span>)</p>
+    <div class="progress"><div id="docsBar" class="progress-bar" style="width:0%"></div></div>
+    <ul id="docsList" class="check-list"></ul>
+    <p class="muted small" data-i18n="docsNote">The exact list depends on the case — for example, a hospital death certificate is needed when the death happened under medical care; if the death happened at home without a physician present, a certificate from the Union Parishad chairman or ward councillor confirming the death is generally accepted instead.</p>
+  </section>
+
+  <!-- ============ APPLICATION ============ -->
+  <section id="tab-apply" class="panel" hidden>
+    <h2 data-i18n="applyTitle">Application helper</h2>
+    <p data-i18n="applyIntro">Fill in the details once. The helper checks them and builds a printable summary and cover letter to take to the registrar. Nothing is submitted online — this tool only prepares your paperwork.</p>
+
+    <h3 data-i18n="secDeceased">The deceased</h3>
+    <div class="form-grid">
+      <div class="form-row"><label for="fName" data-i18n="lblName">Full name *</label><input type="text" id="fName" maxlength="100" autocomplete="off"></div>
+      <div class="form-row"><label for="fFather" data-i18n="lblFather">Father's name *</label><input type="text" id="fFather" maxlength="100" autocomplete="off"></div>
+      <div class="form-row"><label for="fMother" data-i18n="lblMother">Mother's name *</label><input type="text" id="fMother" maxlength="100" autocomplete="off"></div>
+      <div class="form-row"><label for="fSpouse" data-i18n="lblSpouse">Spouse's name</label><input type="text" id="fSpouse" maxlength="100" autocomplete="off"></div>
+      <div class="form-row"><label for="fSex" data-i18n="lblSex">Sex *</label>
+        <select id="fSex"><option value="" data-i18n="optChoose">Choose…</option><option value="male" data-i18n="optMale">Male</option><option value="female" data-i18n="optFemale">Female</option><option value="other" data-i18n="optOther">Other</option></select></div>
+      <div class="form-row"><label for="fDob" data-i18n="lblDob">Date of birth</label><input type="date" id="fDob"></div>
+      <div class="form-row"><label for="fBrn" data-i18n="lblBrn">Birth registration no. (17 digits)</label><input type="text" id="fBrn" inputmode="numeric" maxlength="17" autocomplete="off"></div>
+      <div class="form-row"><label for="fNid" data-i18n="lblNid">NID no. (10 / 13 / 17 digits)</label><input type="text" id="fNid" inputmode="numeric" maxlength="17" autocomplete="off"></div>
+    </div>
+
+    <h3 data-i18n="secDeath">Death details</h3>
+    <div class="form-grid">
+      <div class="form-row"><label for="fDeathDate" data-i18n="lblDeathDate">Date of death *</label><input type="date" id="fDeathDate"></div>
+      <div class="form-row"><label for="fDeathPlace" data-i18n="lblDeathPlace">Place of death *</label><input type="text" id="fDeathPlace" maxlength="150" autocomplete="off"></div>
+      <div class="form-row"><label for="fCause" data-i18n="lblCause">Cause of death *</label><input type="text" id="fCause" maxlength="200" autocomplete="off"></div>
+      <div class="form-row"><label for="fDoctor" data-i18n="lblDoctor">Doctor / hospital name</label><input type="text" id="fDoctor" maxlength="150" autocomplete="off"></div>
+      <div class="form-row"><label for="fDoctorReg" data-i18n="lblDoctorReg">Doctor registration no.</label><input type="text" id="fDoctorReg" maxlength="50" autocomplete="off"></div>
+      <div class="form-row"><label for="fBurialPlace" data-i18n="lblBurialPlace">Burial / cremation place</label><input type="text" id="fBurialPlace" maxlength="150" autocomplete="off"></div>
+      <div class="form-row"><label for="fBurialDate" data-i18n="lblBurialDate">Burial / cremation date</label><input type="date" id="fBurialDate"></div>
+    </div>
+
+    <h3 data-i18n="secInformant">Informant (applicant)</h3>
+    <div class="form-grid">
+      <div class="form-row"><label for="fInfName" data-i18n="lblInfName">Informant's name *</label><input type="text" id="fInfName" maxlength="100" autocomplete="off"></div>
+      <div class="form-row"><label for="fInfRel" data-i18n="lblInfRel">Relationship to the deceased *</label>
+        <select id="fInfRel"><option value="" data-i18n="optChoose">Choose…</option><option value="father" data-i18n="relFather">Father</option><option value="mother" data-i18n="relMother">Mother</option><option value="spouse" data-i18n="relSpouse">Spouse</option><option value="son" data-i18n="relSon">Son</option><option value="daughter" data-i18n="relDaughter">Daughter</option><option value="other" data-i18n="relOther">Other</option></select></div>
+      <div class="form-row"><label for="fInfNid" data-i18n="lblInfNid">Informant's NID no. * (10 / 13 / 17 digits)</label><input type="text" id="fInfNid" inputmode="numeric" maxlength="17" autocomplete="off"></div>
+      <div class="form-row"><label for="fInfMobile" data-i18n="lblInfMobile">Informant's mobile * (11 digits, starts with 01)</label><input type="text" id="fInfMobile" inputmode="numeric" maxlength="11" autocomplete="off"></div>
+    </div>
+
+    <h3 data-i18n="secOffice">Registrar's office</h3>
+    <div class="form-grid">
+      <div class="form-row"><label for="fOfficeType" data-i18n="lblOfficeType">Office type *</label>
+        <select id="fOfficeType"><option value="" data-i18n="optChoose">Choose…</option><option value="union" data-i18n="offUnion">Union Parishad</option><option value="pourashava" data-i18n="offPoura">Pourashava</option><option value="city" data-i18n="offCity">City Corporation</option><option value="cantonment" data-i18n="offCant">Cantonment Board</option><option value="mission" data-i18n="offMission">Bangladesh Mission (abroad)</option></select></div>
+      <div class="form-row"><label for="fOfficeName" data-i18n="lblOfficeName">Office name *</label><input type="text" id="fOfficeName" maxlength="150" autocomplete="off"></div>
+    </div>
+
+    <p id="applyError" class="error" hidden></p>
+    <div class="form-row btn-row">
+      <button id="genBtn" class="btn primary" type="button" data-i18n="genBtn">Generate summary &amp; letter</button>
+      <button id="clearFormBtn" class="btn" type="button" data-i18n="clearFormBtn">Clear form</button>
+    </div>
+
+    <div id="letterBox" class="letter" hidden>
+      <h3 data-i18n="letterTitle">Application summary &amp; cover letter</h3>
+      <div id="summaryTable"></div>
+      <div id="letterText" class="letter-text"></div>
+      <button id="printBtn" class="btn primary" type="button" data-i18n="printBtn">Print</button>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="tab-faq" class="panel" hidden>
+    <h2 data-i18n="faqTitle">Frequently asked questions</h2>
+    <div class="faq-list">
+      <details><summary data-i18n="q1">Can I apply for a death certificate online?</summary><p data-i18n="a1">Yes — apply at bdris.gov.bd/dr/application. Most offices still ask you to bring the original documents in person for verification before the certificate is issued.</p></details>
+      <details><summary data-i18n="q2">How long do I have to register?</summary><p data-i18n="a2">Registration within 45 days of the death is free and the smoothest path. From 45 days to 5 years a small fee applies; after 5 years you must also submit a written explanation for the delay.</p></details>
+      <details><summary data-i18n="q3">What if the death happened abroad?</summary><p data-i18n="a3">Deaths abroad are registered at the nearest Bangladesh High Commission, Embassy or Consulate, which acts as the registrar.</p></details>
+      <details><summary data-i18n="q4">What if the deceased had no birth certificate?</summary><p data-i18n="a4">The registrar can still process the case with the other documents — NID or passport, the doctor's or hospital's death certificate, and the informant's own ID. Ask your local office which papers it will accept.</p></details>
+      <details><summary data-i18n="q5">Can I get a correction on a certificate?</summary><p data-i18n="a5">Yes — apply to the same registrar's office with the correct documents and the original certificate. Corrections are verified by the office before a revised certificate is issued.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section id="tab-data" class="panel" hidden>
+    <h2 data-i18n="dataTitle">Your data</h2>
+    <p data-i18n="dataIntro">Everything is stored only in this browser (localStorage). Nothing is sent anywhere — this app makes zero network requests.</p>
+    <div class="form-row btn-row">
+      <button id="exportBtn" class="btn" type="button" data-i18n="exportBtn">Export JSON</button>
+      <label class="btn file-label" for="importFile" data-i18n="importBtn">Import JSON</label>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+      <button id="demoBtn" class="btn" type="button" data-i18n="demoBtn">Load demo data</button>
+      <button id="eraseBtn" class="btn danger" type="button" data-i18n="eraseBtn">Erase all data</button>
+    </div>
+    <div id="eraseBox" hidden>
+      <p data-i18n="eraseWarn">Type DELETE to erase all saved data (checklist, form draft and language stay on this device only).</p>
+      <input type="text" id="eraseInput" autocomplete="off" placeholder="DELETE">
+      <button id="eraseConfirmBtn" class="btn danger" type="button" data-i18n="eraseConfirm">Erase now</button>
+      <p id="eraseError" class="error" hidden></p>
+    </div>
+    <p id="dataMsg" class="msg" hidden></p>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <p data-i18n="footer1">Death Certificate BD is a personal planning helper, not an official government service and not legal advice. Rules and fees change — confirm them at bdris.gov.bd or your local registrar's office before acting.</p>
+  <p class="muted small" data-i18n="footer2">Sources checked November 2026: BDRIS portal (bdris.gov.bd), Births and Deaths Registration Act 2004, US State Department reciprocity schedule for Bangladesh. Works fully offline; no data leaves your device.</p>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
